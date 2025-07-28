@@ -1,0 +1,29 @@
+const courses = {
+  "Fundamentos de Administración": {
+    details: "Introducción a conceptos básicos de gestión empresarial.",
+    link: "https://uniandes.edu.co"
+  },
+  "Contabilidad Financiera": {
+    details: "Manejo de registros contables y análisis financiero.",
+    link: "https://uniandes.edu.co"
+  },
+  // Puedes agregar más cursos aquí con sus detalles y enlaces si quieres
+};
+
+document.querySelectorAll('.course').forEach(el => {
+  el.addEventListener('click', () => {
+    const name = el.dataset.name;
+    const info = courses[name] || {
+      details: "Información no disponible por el momento.",
+      link: "#"
+    };
+    document.getElementById('courseTitle').innerText = name;
+    document.getElementById('courseDetails').innerText = info.details;
+    document.getElementById('courseLink').href = info.link;
+    document.getElementById('modal').classList.remove('hidden');
+  });
+});
+
+document.getElementById('close').addEventListener('click', () => {
+  document.getElementById('modal').classList.add('hidden');
+});
